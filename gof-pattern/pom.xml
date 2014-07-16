@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ericsson.trainings.gof.patterns</groupId>
+	<artifactId>gof-pattern</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>gof-pattern</name>
+	
+	<properties>
+		<version.junit>4.11</version.junit>
+		<version.maven-compiler-plugin>2.4</version.maven-compiler-plugin>
+		<version.maven-compiler-source>1.7</version.maven-compiler-source>
+		<version.maven-compiler-target>1.7</version.maven-compiler-target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.maven-compiler-plugin}</version>
+				<configuration>
+					<source>${version.maven-compiler-source}</source>
+					<target>${version.maven-compiler-target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>gof-pattern-singleton</module>
+	</modules>
+</project>
