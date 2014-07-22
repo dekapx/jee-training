@@ -23,4 +23,17 @@ public final class MySingletonDoubleCheck {
 		return "Hello !!! " + arg;
 	}
 
+	public static void main(String[] args) {
+		Runnable task = new Runnable() {
+			@Override
+			public void run() {
+				MySingletonDoubleCheck single = MySingletonDoubleCheck.getInstance();
+				single.sayHello("test");
+			}
+		};
+		for (int i = 0; i < 150; i++) {
+			new Thread(task).start();
+		}
+	}
+
 }

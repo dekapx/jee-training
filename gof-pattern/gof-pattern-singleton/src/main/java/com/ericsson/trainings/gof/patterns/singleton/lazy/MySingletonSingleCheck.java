@@ -1,7 +1,7 @@
 package com.ericsson.trainings.gof.patterns.singleton.lazy;
 
 public final class MySingletonSingleCheck {
-	private static MySingletonSingleCheck instance = null;
+	private static volatile MySingletonSingleCheck instance = null;
 
 	private MySingletonSingleCheck() {
 		System.out.println("MySingletonSingleCheck initialized...");
@@ -21,4 +21,16 @@ public final class MySingletonSingleCheck {
 		return "Hello !!! " + arg;
 	}
 
+	public static void main(String[] args) {
+		Runnable task = new Runnable() {
+			@Override
+			public void run() {
+				MySingletonSingleCheck single = MySingletonSingleCheck.getInstance();
+				single.sayHello("test");
+			}
+		};
+		for (int i = 0; i < 50; i++) {
+			new Thread(task).start();
+		}
+	}
 }

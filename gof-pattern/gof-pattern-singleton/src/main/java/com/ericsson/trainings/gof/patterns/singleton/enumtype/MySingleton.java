@@ -7,4 +7,8 @@ public enum MySingleton {
 		return "Hello !!! " + arg;
 	}
 
+	public static void main(String[] args) {
+		MySingleton singleton = MySingleton.INSTANCE;
+		singleton.sayHello("test");
+	}
 }
