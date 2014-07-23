@@ -1,5 +1,7 @@
 package com.ericsson.trainings.jee6.jms.p2p;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
@@ -20,6 +22,16 @@ import org.slf4j.LoggerFactory;
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/test"), @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
 public class QueueListenerBean implements MessageListener {
 	private static final Logger LOGGER = LoggerFactory.getLogger(QueueListenerBean.class);
+
+	@PostConstruct
+	public void init() {
+		LOGGER.info("QueueListenerBean initialized...");
+	}
+
+	@PreDestroy
+	public void destroy() {
+		LOGGER.info("QueueListenerBean destroyed...");
+	}
 
 	public void onMessage(Message rcvMessage) {
 		try {

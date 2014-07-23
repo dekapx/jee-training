@@ -1,5 +1,7 @@
 package com.ericsson.trainings.jee6.jms.pubsub;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
@@ -11,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Message-Driven Bean listening <b>topic/test</b> queue and process incoming messages.
+ * Message-Driven Bean listening <b>topic/test</b> topic and process incoming messages.
  * 
  * @author KAPIL KUMAR
  * @version 1.0
@@ -20,6 +22,16 @@ import org.slf4j.LoggerFactory;
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "topic/test"), @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
 public class TopicSubscriberZ implements MessageListener {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TopicSubscriberZ.class);
+
+	@PostConstruct
+	public void init() {
+		LOGGER.info("TopicSubscriberZ initialized...");
+	}
+
+	@PreDestroy
+	public void destroy() {
+		LOGGER.info("TopicSubscriberZ destroyed...");
+	}
 
 	public void onMessage(Message rcvMessage) {
 		try {

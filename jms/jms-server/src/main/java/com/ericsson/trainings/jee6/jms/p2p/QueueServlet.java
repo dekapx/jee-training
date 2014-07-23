@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ApplicationServlet sends text message to <code>QueueSenderBean</code>.
+ * QueueServlet sends text message to <code>QueueSenderBean</code>.
  * 
  * @author KAPIL KUMAR
  * @version 1.0

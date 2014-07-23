@@ -41,7 +41,6 @@ public class TopicSenderBean {
 			messageProducer.send(textMessage);
 			LOGGER.info("Sending test message [{}] to TestTopic", textMessage.getText());
 		} catch (JMSException e) {
-			e.printStackTrace();
 			LOGGER.error("A problem occurred during the delivery of this message", e);
 		} finally {
 			if (connection != null) {
