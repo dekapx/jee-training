@@ -33,10 +33,10 @@ public class QueueListenerBean implements MessageListener {
 		LOGGER.info("QueueListenerBean destroyed...");
 	}
 
-	public void onMessage(Message rcvMessage) {
+	public void onMessage(Message message) {
 		try {
-			if (rcvMessage instanceof TextMessage) {
-				TextMessage msg = (TextMessage) rcvMessage;
+			if (message instanceof TextMessage) {
+				TextMessage msg = (TextMessage) message;
 				LOGGER.info("Received Message from queue: " + msg.getText());
 			}
 		} catch (JMSException e) {

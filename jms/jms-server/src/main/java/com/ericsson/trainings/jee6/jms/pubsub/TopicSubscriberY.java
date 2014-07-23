@@ -33,10 +33,10 @@ public class TopicSubscriberY implements MessageListener {
 		LOGGER.info("TopicSubscriberY destroyed...");
 	}
 
-	public void onMessage(Message rcvMessage) {
+	public void onMessage(Message message) {
 		try {
-			if (rcvMessage instanceof TextMessage) {
-				TextMessage msg = (TextMessage) rcvMessage;
+			if (message instanceof TextMessage) {
+				TextMessage msg = (TextMessage) message;
 				LOGGER.info("Received message [{}] by [{}] from Topic [topic/test]", msg.getText(), this.getClass().getSimpleName());
 			}
 		} catch (JMSException e) {
