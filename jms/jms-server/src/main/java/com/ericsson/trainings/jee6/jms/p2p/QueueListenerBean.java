@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
  * @author KAPIL KUMAR
  * @version 1.0
  */
-@MessageDriven(name = "testQueue", activationConfig = { @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+@MessageDriven(name = "QueueListenerBean", activationConfig = { @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/test"), @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
 public class QueueListenerBean implements MessageListener {
 	private static final Logger LOGGER = LoggerFactory.getLogger(QueueListenerBean.class);
