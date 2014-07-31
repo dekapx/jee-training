@@ -28,12 +28,11 @@ public class Contact implements Serializable {
 	@Column(name = "EMAIL", length = 45, nullable = false)
 	private String email;
 
-	public Long getId() {
-		return id;
+	public Contact() {
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Long getId() {
+		return id;
 	}
 
 	public String getFirstName() {
