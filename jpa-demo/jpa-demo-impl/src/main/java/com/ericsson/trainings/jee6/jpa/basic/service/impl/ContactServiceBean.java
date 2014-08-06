@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 
 import com.ericsson.trainings.jee6.jpa.basic.dao.ContactDao;
@@ -12,6 +14,7 @@ import com.ericsson.trainings.jee6.jpa.basic.service.ContactService;
 
 @Stateless
 @Local(ContactService.class)
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class ContactServiceBean implements ContactService<Contact> {
 
 	@Inject
