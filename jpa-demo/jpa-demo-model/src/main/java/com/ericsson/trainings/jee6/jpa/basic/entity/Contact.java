@@ -11,9 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CONTACTS")
+@SuppressWarnings("serial")
 public class Contact implements Serializable {
-
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

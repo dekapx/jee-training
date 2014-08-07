@@ -27,4 +27,4 @@
 +-----------------------------------+
 	- Execute arquillian tests		|
 +-----------------------------------+
-mvn clean test -Parq-jbossas-remote
+mvn clean test -Parq-jbossas-remote -Dtest=<test-class>

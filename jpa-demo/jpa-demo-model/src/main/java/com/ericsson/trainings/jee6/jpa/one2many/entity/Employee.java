@@ -1,25 +1,24 @@
-package com.ericsson.trainings.jee6.jpa.one2one.entity;
+package com.ericsson.trainings.jee6.jpa.one2many.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PERSONS")
+@Table(name = "EMPLOYEES")
 @SuppressWarnings("serial")
-public class Person implements Serializable {
+public class Employee implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private Long id;
+	private Long empId;
 
 	@Column(name = "FIRST_NAME", length = 25, nullable = false)
 	private String firstName;
@@ -30,21 +29,21 @@ public class Person implements Serializable {
 	@Column(name = "EMAIL", length = 45, nullable = false)
 	private String email;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Address address;
+	@ManyToOne
+	private Department department;
 
-	public Person() {
+	public Employee() {
 	}
 
-	public Person(final String firstName, final String lastName, final String email, final Address address) {
+	public Employee(String firstName, String lastName, String email, Department department) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.address = address;
+		this.department = department;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getEmpId() {
+		return empId;
 	}
 
 	public String getFirstName() {
@@ -59,12 +58,8 @@ public class Person implements Serializable {
 		return email;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Department getDepartment() {
+		return department;
 	}
 
-	@Override
-	public String toString() {
-		return "[" + firstName + " " + lastName + " " + email + "]";
-	}
 }

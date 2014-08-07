@@ -29,6 +29,10 @@ public abstract class AbstractJpaDao<T extends Serializable, PK extends Serializ
 		this.persistentClass = persistentClass;
 	}
 
+	protected EntityManager getEntityManager() {
+		return entityManager;
+	}
+
 	public void persist(final T entity) {
 		entityManager.persist(entity);
 	}
