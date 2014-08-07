@@ -30,9 +30,9 @@ import com.ericsson.trainings.jee6.jpa.one2many.service.impl.EmployeeServiceBean
 
 @RunWith(Arquillian.class)
 public class EmployeeDepartmentServiceTest {
-	@Deployment(name = "person-test")
+	@Deployment(name = "emp-dept-test")
 	public static Archive<?> createTestArchive() {
-		final WebArchive war = ShrinkWrap.create(WebArchive.class, "person-test.war");
+		final WebArchive war = ShrinkWrap.create(WebArchive.class, "emp-dept-test.war");
 
 		war.addClass(EmployeeService.class);
 		war.addClass(EmployeeServiceBean.class);

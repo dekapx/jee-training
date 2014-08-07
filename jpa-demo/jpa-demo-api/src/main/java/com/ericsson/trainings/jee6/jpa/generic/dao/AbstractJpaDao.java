@@ -37,7 +37,7 @@ public abstract class AbstractJpaDao<T extends Serializable, PK extends Serializ
 		entityManager.persist(entity);
 	}
 
-	public void update(final T entity) {
+	public void merge(final T entity) {
 		entityManager.merge(entity);
 	}
 

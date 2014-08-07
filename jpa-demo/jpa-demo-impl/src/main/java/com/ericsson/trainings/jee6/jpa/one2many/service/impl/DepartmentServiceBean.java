@@ -18,8 +18,8 @@ public class DepartmentServiceBean implements DepartmentService<Department> {
 	private DepartmentDao<Department> departmentDao;
 
 	@Override
-	public Department save(Department entity) {
-		return departmentDao.save(entity);
+	public Department save(Department department) {
+		return departmentDao.save(department);
 	}
 
 	@Override

@@ -18,8 +18,8 @@ public class EmployeeServiceBean implements EmployeeService<Employee> {
 	private EmployeeDao<Employee> employeeDao;
 
 	@Override
-	public Employee save(Employee entity) {
-		return employeeDao.save(entity);
+	public Employee save(Employee employee) {
+		return employeeDao.save(employee);
 	}
 
 	@Override
