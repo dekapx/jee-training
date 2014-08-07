@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.ejb.EJB;
@@ -92,14 +91,6 @@ public class EmployeeDepartmentServiceTest {
 
 		assertNotNull(department);
 		assertNotNull(department.getDeptId());
-	}
-
-	private Collection<Employee> getEmployees() {
-		Collection<Employee> employees = new ArrayList<>();
-		employees.add(new Employee("Steve", "Austin", "steve@wwe.com", null));
-		employees.add(new Employee("Bruce", "Lee", "bruce@jeetkunedo.com", null));
-
-		return employees;
 	}
 
 	@Test
