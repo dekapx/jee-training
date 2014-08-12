@@ -6,9 +6,13 @@
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>gof-pattern</name>
-	
+
 	<properties>
 		<version.junit>4.11</version.junit>
+		<version.mockito>1.9.5</version.mockito>
+		<version.powermock.module>1.5</version.powermock.module>
+		<version.powermock.mockito>1.5</version.powermock.mockito>
+
 		<version.maven-compiler-plugin>2.4</version.maven-compiler-plugin>
 		<version.maven-compiler-source>1.7</version.maven-compiler-source>
 		<version.maven-compiler-target>1.7</version.maven-compiler-target>
@@ -19,6 +23,25 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${version.mockito}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${version.powermock.module}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${version.powermock.mockito}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -38,5 +61,6 @@
 
 	<modules>
 		<module>gof-pattern-singleton</module>
+		<module>gof-pattern-observer</module>
 	</modules>
 </project>
