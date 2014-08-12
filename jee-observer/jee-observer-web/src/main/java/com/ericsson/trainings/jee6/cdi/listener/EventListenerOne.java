@@ -11,8 +11,8 @@ import com.ericsson.trainings.jee6.cdi.event.CdiEvent;
 
 @Startup
 @Singleton
-public class EventListener {
-	private static final Logger LOGGER = LoggerFactory.getLogger(EventListener.class);
+public class EventListenerOne {
+	private static final Logger LOGGER = LoggerFactory.getLogger(EventListenerOne.class);
 
 	public void onEvent(@Observes final CdiEvent event) {
 		LOGGER.info("Received event [{}]", event);
