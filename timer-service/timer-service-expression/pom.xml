@@ -6,9 +6,10 @@
 		<artifactId>timer-service</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>timer-service-annotation</artifactId>
+	
+	<artifactId>timer-service-expression</artifactId>
 	<packaging>war</packaging>
-	<name>timer-service-annotation</name>
+	<name>timer-service-expression</name>
 	
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -34,6 +35,5 @@
 				<version>${version.jboss.maven.plugin}</version>
 			</plugin>
 		</plugins>
-	</build>
-		
+	</build>	
 </project>

@@ -14,11 +14,16 @@ public class EventScheduler {
 
 	@Schedule(hour = "*", minute = "*", second = "*/5", persistent = false)
 	public void runEvery5Seconds() {
-		LOGGER.info("----------------- executing timer every 5 second -----------------");
+		LOGGER.info("----------------- executing timer every 5 seconds -----------------");
 	}
 
 	@Schedule(hour = "*", minute = "*/1", second = "0", persistent = false)
-	public void runEveryMinute() {
-		LOGGER.info("----------------- executing timer every 1 minute -----------------");
+	public void runEvery2Minute() {
+		LOGGER.info("----------------- executing timer every 2 minutes -----------------");
+	}
+
+	@Schedule(hour = "*/1", minute = "0", second = "0", persistent = false)
+	public void runEveryHour() {
+		LOGGER.info("----------------- executing timer every hour -----------------");
 	}
 }

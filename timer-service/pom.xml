@@ -117,5 +117,6 @@
 	</build>		
 	<modules>
 		<module>timer-service-annotation</module>
+		<module>timer-service-expression</module>
 	</modules>
 </project>
