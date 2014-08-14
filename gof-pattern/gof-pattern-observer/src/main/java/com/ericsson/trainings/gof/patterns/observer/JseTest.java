@@ -18,7 +18,9 @@ public class JseTest {
 		Event javaFileEvent = new Event("Java");
 		viewManager.setEvent(javaFileEvent);
 
-		// unsubscribe property view from events
+		System.out.println("-------------------------------");
+
+		// remove property view from events
 		viewManager.removeView(propertyView);
 
 		Event xmlFileEvent = new Event("XML");

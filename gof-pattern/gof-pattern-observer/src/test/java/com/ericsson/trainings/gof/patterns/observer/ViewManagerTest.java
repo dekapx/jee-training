@@ -29,6 +29,12 @@ public class ViewManagerTest {
 		viewManager = null;
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddViewAsNull() {
+		viewManager = new ViewManagerImpl();
+		viewManager.addView(null);
+	}
+
 	@Test
 	public void testAddView() {
 		viewManager = new ViewManagerImpl();
@@ -39,6 +45,12 @@ public class ViewManagerTest {
 		Collection<IView> views = Whitebox.getInternalState(viewManager, "views");
 		Assert.assertNotNull(views);
 		Assert.assertTrue(views.size() == 2);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testRemoveViewAsNull() {
+		viewManager = new ViewManagerImpl();
+		viewManager.removeView(null);
 	}
 
 	@Test
@@ -57,6 +69,12 @@ public class ViewManagerTest {
 
 		viewManager.removeView(mockedPropertyView);
 		Assert.assertTrue(views.size() == 0);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetEventAsNull() {
+		viewManager = new ViewManagerImpl();
+		viewManager.setEvent(null);
 	}
 
 	@Test

@@ -13,16 +13,26 @@ public class ViewManagerImpl implements ViewManager {
 
 	@Override
 	public void addView(final IView iView) {
+		if (iView == null) {
+			throw new IllegalArgumentException("View must not be null...");
+		}
 		this.views.add(iView);
 	}
 
 	@Override
 	public void removeView(final IView iView) {
+		if (iView == null) {
+			throw new IllegalArgumentException("View must not be null...");
+		}
 		this.views.remove(iView);
 	}
 
 	@Override
 	public void setEvent(final Event event) {
+		if (event == null) {
+			throw new IllegalArgumentException("Event must not be null...");
+		}
+
 		this.event = event;
 		notifyViews();
 	}
