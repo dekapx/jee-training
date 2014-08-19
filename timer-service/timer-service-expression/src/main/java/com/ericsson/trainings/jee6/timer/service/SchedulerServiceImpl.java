@@ -1,5 +1,7 @@
 package com.ericsson.trainings.jee6.timer.service;
 
+import java.util.Collection;
+
 import javax.annotation.Resource;
 import javax.ejb.Local;
 import javax.ejb.ScheduleExpression;
@@ -22,6 +24,12 @@ public class SchedulerServiceImpl implements SchedulerService {
 	@Resource
 	private TimerService timerService;
 
+	@Timeout
+	public void timeout(final Timer timer) {
+		final TimerTask timerTask = (TimerTask) timer.getInfo();
+		LOGGER.info("Executing timer job for timer task [{}]", timerTask.getTimerJob());
+	}
+
 	@Override
 	public void createTimer(TimerTask timerTask, ScheduleExpression expression, boolean persistant) {
 		if (timerTask == null) {
@@ -38,9 +46,16 @@ public class SchedulerServiceImpl implements SchedulerService {
 		timerService.createCalendarTimer(expression, timerConfig);
 	}
 
-	@Timeout
-	public void timeout(final Timer timer) {
-		final TimerTask timerTask = (TimerTask) timer.getInfo();
-		LOGGER.info("Executing timer job for timer task [{}]", timerTask.getTimerJob());
+	@Override
+	public void cancelTimer(final String timerId) {
+		final Collection<Timer> timers = timerService.getTimers();
+		for (Timer timer : timers) {
+			final TimerTask timerTask = (TimerTask) timer.getInfo();
+			if (timerTask.getTimerId().equals(timerId)) {
+				timer.cancel();
+				break;
+			}
+		}
 	}
+
 }
