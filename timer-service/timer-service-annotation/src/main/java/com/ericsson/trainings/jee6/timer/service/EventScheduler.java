@@ -17,7 +17,7 @@ public class EventScheduler {
 		LOGGER.info("----------------- executing timer every 5 seconds -----------------");
 	}
 
-	@Schedule(hour = "*", minute = "*/1", second = "0", persistent = false)
+	@Schedule(hour = "*", minute = "*/2", second = "0", persistent = false)
 	public void runEvery2Minute() {
 		LOGGER.info("----------------- executing timer every 2 minutes -----------------");
 	}
