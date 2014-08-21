@@ -1,4 +1,4 @@
-package com.ericsson.trainings.jse.dynamicproxy;
+package com.ericsson.trainings.jse.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

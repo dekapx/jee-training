@@ -3,9 +3,9 @@ package com.ericsson.trainings.jse.client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ericsson.trainings.jse.dynamicproxy.HelloWorldProxy;
-import com.ericsson.trainings.jse.dynamicproxy.HelloWorld;
-import com.ericsson.trainings.jse.dynamicproxy.HelloWorldImpl;
+import com.ericsson.trainings.jse.proxy.HelloWorldProxy;
+import com.ericsson.trainings.jse.subject.HelloWorld;
+import com.ericsson.trainings.jse.subject.HelloWorldImpl;
 
 public class HelloWorldJseClient {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldJseClient.class);

@@ -1,4 +1,4 @@
-package com.ericsson.trainings.jse.dynamicproxy;
+package com.ericsson.trainings.jse.subject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
