@@ -7,7 +7,7 @@
 
 	<container qualifier="jboss" default="true">
 		<configuration>
-			<property name="jbossHome">C:/Local/Installers/jboss-eap-6.2</property>
+			<property name="jbossHome">C:/Installers/jboss-eap-6.3</property>
 		</configuration>
 	</container>
 

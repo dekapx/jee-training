@@ -46,7 +46,7 @@ public class HelloWorldTest {
 	@Test
 	@InSequence(1)
 	public void testSayHello() throws Exception {
-		logger.info("Calling HelloWorld EJB from Arquillian...");
+		logger.info("Calling Sync HelloWorld EJB from Arquillian...");
 
 		final String expected = "Hello !!! Test";
 		final String output = helloWorldEJB.sayHello("Test");
@@ -58,7 +58,7 @@ public class HelloWorldTest {
 	@Test
 	@InSequence(2)
 	public void testSayHelloAsync() throws Exception {
-		logger.info("Calling HelloWorld EJB from Arquillian...");
+		logger.info("Calling Async HelloWorld EJB from Arquillian...");
 
 		final String expected = "Hello !!! Test";
 		final Future<String> future = helloWorldEJB.sayHelloAsync("Test");
