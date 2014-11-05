@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ericsson.jse.di.weld</groupId>
-	<artifactId>weld-example</artifactId>
+	<artifactId>weld-quickstart</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
-	<name>weld-example</name>
+	<name>weld-quickstart</name>
 
 	<properties>
 		<java.version>1.7</java.version>
