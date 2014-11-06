@@ -62,5 +62,6 @@
 	<modules>
 		<module>gof-pattern-singleton</module>
 		<module>gof-pattern-observer</module>
+		<module>got-pattern-flyweight</module>
 	</modules>
 </project>
