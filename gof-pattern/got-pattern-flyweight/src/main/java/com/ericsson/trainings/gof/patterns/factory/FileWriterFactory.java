@@ -23,7 +23,7 @@ public enum FileWriterFactory {
 				fileWriter = (FileWriter) Class.forName(className).newInstance();
 				fileWriterObjectPool.put(className, fileWriter);
 			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-				throw new FileWriterNotFoundExcception("Unable to find the implemnation for class [ " + className + " ]. Please check the class name.", e);
+				throw new FileWriterNotFoundExcception("Unable to find the implemenation for class [ " + className + " ]. Please check the class name.", e);
 			}
 		}
 
