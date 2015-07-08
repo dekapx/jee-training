@@ -1,8 +1,9 @@
 package com.ericsson.trainings.jee.service.api;
 
-import javax.ejb.Local;
+import java.util.concurrent.Future;
 
-@Local
 public interface HelloWorldLocal {
 	String sayHello(String arg);
+
+	Future<String> sayHelloAsync(String arg);
 }

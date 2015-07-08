@@ -10,6 +10,7 @@
 		<module>jee7-wildfly-api</module>
 		<module>jee7-wildfly-ejb</module>
 		<module>jee7-wildfly-war</module>
+		<module>jee7-wildfly-testsuite</module>
 	</modules>
 
 	<properties>
@@ -19,7 +20,10 @@
 
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
+		
+		<mockito.version>1.9.5</mockito.version>
 
+		<version.surefire.plugin>2.16</version.surefire.plugin>
 		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
 		<version.war.plugin>2.5</version.war.plugin>
 		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
@@ -114,6 +118,7 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- Unit Test Dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -121,17 +126,13 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.jboss.arquillian.protocol</groupId>
-			<artifactId>arquillian-protocol-servlet</artifactId>
-			<scope>test</scope>
-		</dependency>
-
+	<!-- Logging Dependencies -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
