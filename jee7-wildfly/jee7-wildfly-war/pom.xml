@@ -9,15 +9,20 @@
 	<artifactId>jee7-wildfly-war</artifactId>
 	<packaging>war</packaging>
 	<name>jee7-wildfly-war</name>
-
+	
 	<dependencies>
+		<dependency>
+			<groupId>org.jboss.spec.javax.servlet</groupId>
+			<artifactId>jboss-servlet-api_3.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>	
 		<dependency>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>${project.parent.artifactId}-ejb</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-	</dependencies>
-
+	</dependencies>	
+	
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
