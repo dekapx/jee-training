@@ -1,7 +1,12 @@
 package com.ericsson.trainings.jee.service.impl;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
+
+import java.util.concurrent.Future;
 
 import org.junit.After;
 import org.junit.Before;
@@ -57,7 +62,7 @@ public class HelloWorldBeanTest {
 	public void testSayHello_withValidArgument_returnFormattedOutput() {
 		final String expectedOutput = "Hello !!! JEE-7";
 		final String actualOutput = objUnderTest.sayHello("JEE-7");
-		org.junit.Assert.assertEquals(expectedOutput, actualOutput);
+		assertEquals(expectedOutput, actualOutput);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -68,6 +73,15 @@ public class HelloWorldBeanTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testSayHelloAsync_withEmptyArgument_throwsIllegalArgumentException() {
 		objUnderTest.sayHelloAsync("");
+	}
+
+	@Test
+	public void testSayHelloAsync_withValidArgument_returnFormattedOutput() throws Exception {
+		final String expectedOutput = "Hello !!! JEE-7";
+		final Future<String> actualOutput = objUnderTest.sayHelloAsync("JEE-7");
+		assertNotNull(actualOutput);
+		assertEquals(expectedOutput, actualOutput.get());
+		assertTrue(actualOutput.isDone());
 	}
 
 }
