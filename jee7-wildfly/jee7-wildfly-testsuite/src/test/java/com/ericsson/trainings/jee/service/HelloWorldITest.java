@@ -26,6 +26,7 @@ import com.ericsson.trainings.jee.service.util.TextMessageFormatter;
 
 @RunWith(Arquillian.class)
 public class HelloWorldITest {
+	
 	private static final Logger logger = LoggerFactory.getLogger(HelloWorldITest.class);
 
 	@Deployment
@@ -61,4 +62,5 @@ public class HelloWorldITest {
 		assertEquals(expected, future.get());
 		assertTrue(future.isDone());
 	}
+	
 }

@@ -19,6 +19,7 @@ import com.ericsson.trainings.jee.service.util.TextMessageFormatter;
 @Stateless
 @Local(HelloWorldLocal.class)
 public class HelloWorldBean implements HelloWorldLocal {
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldBean.class);
 
 	@Inject
@@ -54,4 +55,5 @@ public class HelloWorldBean implements HelloWorldLocal {
 		LOGGER.info("sayHelloAsync() method invoked with parameter \"{}\"", arg);
 		return new AsyncResult<String>("Hello !!! " + arg);
 	}
+	
 }

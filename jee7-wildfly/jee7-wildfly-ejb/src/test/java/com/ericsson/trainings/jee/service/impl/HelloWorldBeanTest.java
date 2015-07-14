@@ -22,6 +22,7 @@ import com.ericsson.trainings.jee.service.util.TextMessageFormatter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HelloWorldBeanTest {
+	
 	private HelloWorldBean objUnderTest;
 
 	@Mock
