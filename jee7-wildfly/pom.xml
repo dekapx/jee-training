@@ -11,6 +11,7 @@
 		<module>jee7-wildfly-ejb</module>
 		<module>jee7-wildfly-war</module>
 		<module>jee7-wildfly-testsuite</module>
+		<module>jee7-wildfly-jse</module>
 	</modules>
 
 	<properties>
@@ -20,7 +21,7 @@
 
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
-		
+
 		<mockito.version>1.9.5</mockito.version>
 
 		<version.surefire.plugin>2.16</version.surefire.plugin>
@@ -47,6 +48,14 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.wildfly</groupId>
+				<artifactId>wildfly-ejb-client-bom</artifactId>
+				<version>9.0.0.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -132,7 +141,7 @@
 			<scope>test</scope>
 		</dependency>
 
-	<!-- Logging Dependencies -->
+		<!-- Logging Dependencies -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
