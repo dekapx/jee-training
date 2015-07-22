@@ -8,8 +8,14 @@
 	</parent>
 	<artifactId>jee7-wildfly-ejb</artifactId>
 	<name>jee7-wildfly-ejb</name>
-	
+
 	<dependencies>
+		<dependency>
+			<groupId>org.jboss.spec.javax.enterprise.concurrent</groupId>
+			<artifactId>jboss-concurrency-api_1.0_spec</artifactId>
+		</dependency>
+
+
 		<dependency>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>${project.parent.artifactId}-api</artifactId>
