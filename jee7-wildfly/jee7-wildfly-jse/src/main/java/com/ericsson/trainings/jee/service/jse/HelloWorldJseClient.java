@@ -31,12 +31,12 @@ public class HelloWorldJseClient {
 		jndiProps.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
 		final Context context = new InitialContext(jndiProps);
 
-		final HelloWorldRemote remote = (HelloWorldRemote) context.lookup(getJndiName());
+		final HelloWorldRemote remote = (HelloWorldRemote) context.lookup(createRemoteJndiName());
 		context.close();
 		return remote;
 	}
 
-	private static String getJndiName() {
+	private static String createRemoteJndiName() {
 		final String appName = "jee7-wildfly-war";
 		final String beanName = "HelloWorldBean";
 		return appName + "/" + beanName + "!" + HelloWorldRemote.class.getName();

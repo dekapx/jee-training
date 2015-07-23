@@ -29,7 +29,7 @@ public final class MySingletonSingleCheck {
 				single.sayHello("test");
 			}
 		};
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 500; i++) {
 			new Thread(task).start();
 		}
 	}

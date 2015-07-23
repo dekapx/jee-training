@@ -26,12 +26,11 @@ public class ApplicationServlet extends HttpServlet {
 		writer.write("Welcome to Wildfly JEE-7");
 
 		managedExecutorBean.executeTasks();
-
-		writer.close();
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }
