@@ -19,4 +19,16 @@ public final class MySingleton {
 		return "Hello !!! " + arg;
 	}
 
+	public static void main(String[] args) {
+		Runnable task = new Runnable() {
+			@Override
+			public void run() {
+				MySingleton single = MySingleton.getInstance();
+				single.sayHello("test");
+			}
+		};
+		for (int i = 0; i < 500; i++) {
+			new Thread(task).start();
+		}
+	}
 }

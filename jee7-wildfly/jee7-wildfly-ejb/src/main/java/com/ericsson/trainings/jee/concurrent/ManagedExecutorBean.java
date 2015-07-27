@@ -1,8 +1,8 @@
 package com.ericsson.trainings.jee.concurrent;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
@@ -10,6 +10,8 @@ import javax.enterprise.concurrent.ManagedExecutorService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.ericsson.trainings.jee.singleton.BeanStates;
 
 @Stateless
 public class ManagedExecutorBean {
@@ -19,18 +21,24 @@ public class ManagedExecutorBean {
 	private ManagedExecutorService executorService;
 
 	public void executeTasks() {
-		final Callable<Void> task = new Callable<Void>() {
 
-			@Override
-			public Void call() throws Exception {
-				for (int i = 0; i < 5; i++) {
-					TimeUnit.SECONDS.sleep(5);
-					LOGGER.info("Ping - {}", i);
-				}
-				return null;
-			}
-		};
+		final Collection<Callable<BeanStates>> tasks = new ArrayList<>();
+		final Callable<BeanStates> writerOne = new WriterThreadOne();
+		tasks.add(writerOne);
 
-		final Future<Void> future = executorService.submit(task);
+		final Callable<BeanStates> writerTwo = new WriterThreadTwo();
+		tasks.add(writerTwo);
+
+		final Callable<BeanStates> writerThree = new WriterThreadThree();
+		tasks.add(writerThree);
+
+		final Callable<BeanStates> reader = new ReaderThread();
+		tasks.add(reader);
+
+		try {
+			executorService.invokeAll(tasks);
+		} catch (InterruptedException e) {
+			LOGGER.error("Exception while running reader/writer threads...", e);
+		}
 	}
 }

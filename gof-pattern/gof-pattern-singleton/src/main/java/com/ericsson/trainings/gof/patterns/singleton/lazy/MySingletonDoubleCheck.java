@@ -1,7 +1,7 @@
 package com.ericsson.trainings.gof.patterns.singleton.lazy;
 
 public final class MySingletonDoubleCheck {
-	private static MySingletonDoubleCheck instance = null;
+	private static volatile MySingletonDoubleCheck instance = null;
 
 	private MySingletonDoubleCheck() {
 		System.out.println("MySingletonSynchronized initialized...");
@@ -31,7 +31,7 @@ public final class MySingletonDoubleCheck {
 				single.sayHello("test");
 			}
 		};
-		for (int i = 0; i < 150; i++) {
+		for (int i = 0; i < 500; i++) {
 			new Thread(task).start();
 		}
 	}
