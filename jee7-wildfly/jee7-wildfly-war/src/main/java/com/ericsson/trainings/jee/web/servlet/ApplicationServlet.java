@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ericsson.trainings.jee.jms.p2p.QueueSenderBean;
+import com.ericsson.trainings.jee.jms.pubsub.TopicSenderBean;
 
 @WebServlet(name = "ApplicationServlet", urlPatterns = { "/ApplicationServlet" })
 public class ApplicationServlet extends HttpServlet {
@@ -20,6 +21,9 @@ public class ApplicationServlet extends HttpServlet {
 	@EJB
 	private QueueSenderBean queueSenderBean;
 
+	@EJB
+	private TopicSenderBean topicSenderBean;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final PrintWriter writer = response.getWriter();
@@ -27,6 +31,10 @@ public class ApplicationServlet extends HttpServlet {
 
 		for (int i = 0; i < 5; i++) {
 			queueSenderBean.sendMessage("text message - " + i + 1);
+		}
+
+		for (int i = 0; i < 5; i++) {
+			topicSenderBean.sendMessage("text message - " + i + 1);
 		}
 
 		writer.close();

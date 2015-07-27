@@ -8,7 +8,6 @@ import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.servlet.ServletException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,7 @@ public class SingletonThreadSafeBean {
 	private BeanStates beanStates;
 
 	@PostConstruct
-	public void init() throws ServletException {
+	public void init() throws Exception {
 		LOGGER.info("SingletonBean initialized...");
 	}
 

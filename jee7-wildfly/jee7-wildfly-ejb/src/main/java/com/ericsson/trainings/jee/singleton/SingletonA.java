@@ -4,7 +4,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
-import javax.servlet.ServletException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,7 @@ public class SingletonA {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SingletonA.class);
 
 	@PostConstruct
-	public void init() throws ServletException {
+	public void init() throws Exception {
 		LOGGER.info("SingletonA initialized...");
 	}
 
