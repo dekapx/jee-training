@@ -31,10 +31,13 @@ public class MessageReceiverBean implements MessageListener {
 			}
 
 			final TextMessage textMessage = (TextMessage) message;
+			final String jmsCorrelationId = message.getJMSCorrelationID();
 			final String payload = textMessage.getText();
 			LOGGER.info("-- Received Message from queue: " + payload);
 
-			final String response = "Processed: " + payload;
+			final String text = "Processed: " + payload + "for CorrelationId: " + jmsCorrelationId;
+			final TextMessage response = jmsContext.createTextMessage(text);
+			response.setJMSCorrelationID(jmsCorrelationId);
 			jmsContext.createProducer().send(destination, response);
 		} catch (JMSException e) {
 			LOGGER.error("Exception while receiving message from the queue...", e);

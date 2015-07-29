@@ -1,5 +1,7 @@
 package com.ericsson.trainings.jee.jms;
 
+import java.util.UUID;
+
 import javax.annotation.Resource;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
@@ -17,6 +19,8 @@ import org.slf4j.LoggerFactory;
 public class MessageSenderBean implements MessageSenderLocal {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MessageSenderBean.class);
 
+	private static final String SENDER_ID = "TestSender";
+
 	@Inject
 	private JMSContext jmsContext;
 
@@ -28,16 +32,24 @@ public class MessageSenderBean implements MessageSenderLocal {
 
 	public void sendMessage(final String text) {
 		try {
-			final TextMessage textMessage = jmsContext.createTextMessage(text);
-			jmsContext.createProducer().setJMSReplyTo(responseQueue).send(requestQueue, textMessage);
+			final String jmsCorrelationId = generateJmsCorrelationId();
+
+			final TextMessage message = jmsContext.createTextMessage(text);
+			message.setJMSCorrelationID(jmsCorrelationId);
+			jmsContext.createProducer().setJMSReplyTo(responseQueue).send(requestQueue, message);
 			LOGGER.info("-- Sending test message [{}] to TestQueue", text);
 
 			final JMSConsumer consumer = jmsContext.createConsumer(responseQueue);
 			LOGGER.info("-- Create consumer for response queue");
-			final String response = consumer.receiveBody(String.class, 5000);
-			LOGGER.info("-- Received response : {}", response);
+			final TextMessage reply = (TextMessage) consumer.receive();
+			final String response = reply.getText();
+			LOGGER.info("-- Received response : {} for CorrelationID: {}", response, reply.getJMSCorrelationID());
 		} catch (Exception e) {
 			LOGGER.error("A problem occurred during the delivery of this message", e);
 		}
+	}
+
+	private String generateJmsCorrelationId() {
+		return SENDER_ID + "_" + UUID.randomUUID().toString();
 	}
 }
