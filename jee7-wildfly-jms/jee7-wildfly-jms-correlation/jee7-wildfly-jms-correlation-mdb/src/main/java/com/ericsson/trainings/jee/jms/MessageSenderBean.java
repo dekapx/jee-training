@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jms.JMSConsumer;
 import javax.jms.JMSContext;
+import javax.jms.JMSProducer;
 import javax.jms.Queue;
 import javax.jms.TextMessage;
 
@@ -32,12 +33,17 @@ public class MessageSenderBean implements MessageSenderLocal {
 
 	public void sendMessage(final String text) {
 		try {
+			// obtain a JMS Correlation Id
 			final String jmsCorrelationId = generateJmsCorrelationId();
-
+			// create a Text Message
 			final TextMessage message = jmsContext.createTextMessage(text);
+			// set JMS Correlation Id
 			message.setJMSCorrelationID(jmsCorrelationId);
-			jmsContext.createProducer().setJMSReplyTo(responseQueue).send(requestQueue, message);
-			LOGGER.info("-- Sending test message [{}] to TestQueue", text);
+			// create jmsProducer, set reply info and send message to request queue
+			final JMSProducer jmsProducer = jmsContext.createProducer();
+			jmsProducer.setJMSReplyTo(responseQueue);
+			jmsProducer.send(requestQueue, message);
+			LOGGER.info("-- Sending test message [{}] to Request Queue", text);
 
 			final JMSConsumer consumer = jmsContext.createConsumer(responseQueue);
 			LOGGER.info("-- Create consumer for response queue");
