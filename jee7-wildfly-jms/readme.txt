@@ -9,6 +9,8 @@ $ jboss-cli.bat --connect
 $ jms-queue add --queue-address=TestQueue --entries=queue/test
 $ jms-topic add --topic-address=TestTopic --entries=topic/test
 
+$ jms-queue add --queue-address=RequestQueue --entries=queue/requestQueue
+$ jms-queue add --queue-address=ResponseQueue --entries=queue/responseQueue
 ----------------------------------------------------------------------------------------------------------------------------
 - jms queue and topic entry will be added in standalone-full.xml under messaging subsystem for HornetQ server.
 <subsystem xmlns="urn:jboss:domain:messaging:1.4">

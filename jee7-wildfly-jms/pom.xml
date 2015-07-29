@@ -171,5 +171,6 @@
 	<modules>
 		<module>jee7-wildfly-jms-p2p</module>
 		<module>jee7-wildfly-jms-pubsub</module>
+		<module>jee7-wildfly-jms-correlation</module>
 	</modules>
 </project>

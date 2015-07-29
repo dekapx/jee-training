@@ -10,27 +10,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ericsson.trainings.jee.jms.MessagePublisherLocal;
+import com.ericsson.trainings.jee.jms.MessageSenderLocal;
 
 @WebServlet(name = "ApplicationServlet", urlPatterns = { "/ApplicationServlet" })
 public class ApplicationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final int MESSAGE_COUNT = 5;
-
 	@EJB
-	private MessagePublisherLocal messagePublisher;
+	private MessageSenderLocal messageSender;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		final PrintWriter writer = response.getWriter();
-		writer.write("<B>Welcome to Wildfly JEE-7</B><BR><BR>");
+		writer.write("<B>Welcome to Wildfly JEE-7</B>");
 
-		for (int i = 0; i < MESSAGE_COUNT; i++) {
-			final String message = "sample text message-" + (i + 1);
-			messagePublisher.publishMessage(message);
-			writer.write("Sending [ " + message + " ] to the queue...<BR>");
+		for (int i = 0; i < 5; i++) {
+			final String message = "text message-" + (i + 1);
+			messageSender.sendMessage(message);
+			writer.write("<BR>Sending message: " + message);
 		}
 
 		writer.close();

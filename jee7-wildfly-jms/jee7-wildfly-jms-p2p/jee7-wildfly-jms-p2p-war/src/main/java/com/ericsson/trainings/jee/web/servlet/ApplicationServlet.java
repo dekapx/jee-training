@@ -3,7 +3,7 @@ package com.ericsson.trainings.jee.web.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +18,7 @@ public class ApplicationServlet extends HttpServlet {
 
 	private static final int MESSAGE_COUNT = 5;
 
-	@Inject
+	@EJB
 	private MessageSenderLocal messageSender;
 
 	@Override
