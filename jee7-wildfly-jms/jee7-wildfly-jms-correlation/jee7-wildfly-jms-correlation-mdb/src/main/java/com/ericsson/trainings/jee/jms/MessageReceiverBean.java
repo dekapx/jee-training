@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.jms.Destination;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
+import javax.jms.JMSProducer;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
@@ -36,9 +37,11 @@ public class MessageReceiverBean implements MessageListener {
 			LOGGER.info("-- Received Message from queue: " + payload);
 
 			final String text = "Processed: " + payload + "for CorrelationId: " + jmsCorrelationId;
-			final TextMessage response = jmsContext.createTextMessage(text);
-			response.setJMSCorrelationID(jmsCorrelationId);
-			jmsContext.createProducer().send(destination, response);
+			final TextMessage responseMessage = jmsContext.createTextMessage(text);
+			responseMessage.setJMSCorrelationID(jmsCorrelationId);
+
+			final JMSProducer jmsProducer = jmsContext.createProducer();
+			jmsProducer.send(destination, responseMessage);
 		} catch (JMSException e) {
 			LOGGER.error("Exception while receiving message from the queue...", e);
 			throw new RuntimeException(e);

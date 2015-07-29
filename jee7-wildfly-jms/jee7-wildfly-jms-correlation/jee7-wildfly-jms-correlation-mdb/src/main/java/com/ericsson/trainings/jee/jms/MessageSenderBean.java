@@ -33,13 +33,10 @@ public class MessageSenderBean implements MessageSenderLocal {
 
 	public void sendMessage(final String text) {
 		try {
-			// obtain a JMS Correlation Id
 			final String jmsCorrelationId = generateJmsCorrelationId();
-			// create a Text Message
 			final TextMessage message = jmsContext.createTextMessage(text);
-			// set JMS Correlation Id
 			message.setJMSCorrelationID(jmsCorrelationId);
-			// create jmsProducer, set reply info and send message to request queue
+
 			final JMSProducer jmsProducer = jmsContext.createProducer();
 			jmsProducer.setJMSReplyTo(responseQueue);
 			jmsProducer.send(requestQueue, message);
@@ -47,6 +44,7 @@ public class MessageSenderBean implements MessageSenderLocal {
 
 			final JMSConsumer consumer = jmsContext.createConsumer(responseQueue);
 			LOGGER.info("-- Create consumer for response queue");
+
 			final TextMessage reply = (TextMessage) consumer.receive();
 			final String response = reply.getText();
 			LOGGER.info("-- Received response : {} for CorrelationID: {}", response, reply.getJMSCorrelationID());
