@@ -34,20 +34,19 @@ public class MessageSenderBean implements MessageSenderLocal {
 	public void sendMessage(final String text) {
 		try {
 			final String jmsCorrelationId = generateJmsCorrelationId();
-			final TextMessage message = jmsContext.createTextMessage(text);
+			final TextMessage message = jmsContext.createTextMessage();
+			message.setText(text);
 			message.setJMSCorrelationID(jmsCorrelationId);
 
 			final JMSProducer jmsProducer = jmsContext.createProducer();
 			jmsProducer.setJMSReplyTo(responseQueue);
 			jmsProducer.send(requestQueue, message);
-			LOGGER.info("-- Sending test message [{}] to Request Queue", text);
+			LOGGER.info("-- Sending test message [{}] with JmsCorrelationId: [{}]", text, jmsCorrelationId);
 
 			final JMSConsumer consumer = jmsContext.createConsumer(responseQueue);
-			LOGGER.info("-- Create consumer for response queue");
-
 			final TextMessage reply = (TextMessage) consumer.receive();
 			final String response = reply.getText();
-			LOGGER.info("-- Received response : {} for CorrelationID: {}", response, reply.getJMSCorrelationID());
+			LOGGER.info("-- Received response : [{}]", response);
 		} catch (Exception e) {
 			LOGGER.error("A problem occurred during the delivery of this message", e);
 		}

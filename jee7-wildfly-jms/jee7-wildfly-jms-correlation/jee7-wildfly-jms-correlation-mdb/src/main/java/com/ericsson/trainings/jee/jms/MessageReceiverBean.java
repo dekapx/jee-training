@@ -34,10 +34,11 @@ public class MessageReceiverBean implements MessageListener {
 			final TextMessage textMessage = (TextMessage) message;
 			final String jmsCorrelationId = message.getJMSCorrelationID();
 			final String payload = textMessage.getText();
-			LOGGER.info("-- Received Message from queue: " + payload);
+			LOGGER.info("-- Message received by the Consumer: [{}]", payload);
 
-			final String text = "Processed: " + payload + "for CorrelationId: " + jmsCorrelationId;
-			final TextMessage responseMessage = jmsContext.createTextMessage(text);
+			final String text = "Processed: " + payload + " for CorrelationId: " + jmsCorrelationId;
+			final TextMessage responseMessage = jmsContext.createTextMessage();
+			responseMessage.setText(text);
 			responseMessage.setJMSCorrelationID(jmsCorrelationId);
 
 			final JMSProducer jmsProducer = jmsContext.createProducer();
