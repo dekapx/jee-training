@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ericsson.trainings.jee.weld.cdi.beans.FileWriter;
-import com.ericsson.trainings.jee.weld.cdi.util.BeanFactory;
+import com.ericsson.trainings.jee.cdi.beans.FileWriter;
+import com.ericsson.trainings.jee.cdi.util.BeanFactory;
 
 @WebServlet(name = "ApplicationServlet", urlPatterns = { "/ApplicationServlet" })
 public class ApplicationServlet extends HttpServlet {

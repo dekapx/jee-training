@@ -1,4 +1,4 @@
-package com.ericsson.trainings.jee.weld.cdi.util;
+package com.ericsson.trainings.jee.cdi.util;
 
 import java.util.Iterator;
 

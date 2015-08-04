@@ -1,4 +1,4 @@
-package com.ericsson.trainings.jee.weld.cdi.beans;
+package com.ericsson.trainings.jee.cdi.beans;
 
 import javax.inject.Named;
 
