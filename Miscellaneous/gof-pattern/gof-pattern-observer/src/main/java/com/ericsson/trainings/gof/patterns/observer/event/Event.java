@@ -1,4 +1,4 @@
-package com.ericsson.trainings.gof.patterns.observer;
+package com.ericsson.trainings.gof.patterns.observer.event;
 
 public class Event {
 	private String eventType;

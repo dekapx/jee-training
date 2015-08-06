@@ -1,7 +1,10 @@
-package com.ericsson.trainings.gof.patterns.observer;
+package com.ericsson.trainings.gof.patterns.observer.subject;
 
 import java.util.Collection;
 import java.util.HashSet;
+
+import com.ericsson.trainings.gof.patterns.observer.event.Event;
+import com.ericsson.trainings.gof.patterns.observer.observers.IView;
 
 public class ViewManagerImpl implements ViewManager {
 	private Event event;

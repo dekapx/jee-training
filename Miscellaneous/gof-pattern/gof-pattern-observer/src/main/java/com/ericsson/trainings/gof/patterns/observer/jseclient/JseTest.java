@@ -1,4 +1,11 @@
-package com.ericsson.trainings.gof.patterns.observer;
+package com.ericsson.trainings.gof.patterns.observer.jseclient;
+
+import com.ericsson.trainings.gof.patterns.observer.event.Event;
+import com.ericsson.trainings.gof.patterns.observer.observers.IView;
+import com.ericsson.trainings.gof.patterns.observer.observers.OutlineView;
+import com.ericsson.trainings.gof.patterns.observer.observers.PropertyView;
+import com.ericsson.trainings.gof.patterns.observer.subject.ViewManager;
+import com.ericsson.trainings.gof.patterns.observer.subject.ViewManagerImpl;
 
 public class JseTest {
 	public static void main(String[] args) {

@@ -13,6 +13,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
 
+import com.ericsson.trainings.gof.patterns.observer.event.Event;
+import com.ericsson.trainings.gof.patterns.observer.observers.IView;
+import com.ericsson.trainings.gof.patterns.observer.observers.OutlineView;
+import com.ericsson.trainings.gof.patterns.observer.observers.PropertyView;
+import com.ericsson.trainings.gof.patterns.observer.subject.ViewManager;
+import com.ericsson.trainings.gof.patterns.observer.subject.ViewManagerImpl;
+
 public class ViewManagerTest {
 	private IView mockedOutlineView;
 	private IView mockedPropertyView;

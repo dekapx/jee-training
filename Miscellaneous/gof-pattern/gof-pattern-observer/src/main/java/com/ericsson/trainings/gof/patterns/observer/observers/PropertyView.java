@@ -1,4 +1,6 @@
-package com.ericsson.trainings.gof.patterns.observer;
+package com.ericsson.trainings.gof.patterns.observer.observers;
+
+import com.ericsson.trainings.gof.patterns.observer.event.Event;
 
 public class PropertyView implements IView {
 	private static final String VIEW_NAME = "PropertyView";
