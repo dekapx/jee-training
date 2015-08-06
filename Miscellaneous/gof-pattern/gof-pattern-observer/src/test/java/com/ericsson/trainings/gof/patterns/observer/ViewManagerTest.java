@@ -1,15 +1,16 @@
 package com.ericsson.trainings.gof.patterns.observer;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.powermock.api.mockito.PowerMockito.mock;
 
 import java.util.Collection;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.powermock.api.mockito.PowerMockito;
 import org.powermock.reflect.Whitebox;
 
 public class ViewManagerTest {
@@ -20,8 +21,8 @@ public class ViewManagerTest {
 
 	@Before
 	public void setup() {
-		mockedOutlineView = PowerMockito.mock(OutlineView.class);
-		mockedPropertyView = PowerMockito.mock(PropertyView.class);
+		mockedOutlineView = mock(OutlineView.class);
+		mockedPropertyView = mock(PropertyView.class);
 	}
 
 	@After
@@ -30,63 +31,63 @@ public class ViewManagerTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testAddViewAsNull() {
+	public void addView_withNullArgument_throwsIllegalArgumentException() {
 		viewManager = new ViewManagerImpl();
 		viewManager.addView(null);
 	}
 
 	@Test
-	public void testAddView() {
+	public void addView_withValidIViewImplementations_addSuccessfully() {
 		viewManager = new ViewManagerImpl();
 
 		viewManager.addView(mockedOutlineView);
 		viewManager.addView(mockedPropertyView);
 
 		Collection<IView> views = Whitebox.getInternalState(viewManager, "views");
-		Assert.assertNotNull(views);
-		Assert.assertTrue(views.size() == 2);
+		assertNotNull(views);
+		assertTrue(views.size() == 2);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testRemoveViewAsNull() {
+	public void removeView_withNullArgument_throwsIllegalArgumentException() {
 		viewManager = new ViewManagerImpl();
 		viewManager.removeView(null);
 	}
 
 	@Test
-	public void testRemoveView() {
+	public void removeView_withValidIViewImplementations_removeSuccessfully() {
 		viewManager = new ViewManagerImpl();
 
 		viewManager.addView(mockedOutlineView);
 		viewManager.addView(mockedPropertyView);
 
 		Collection<IView> views = Whitebox.getInternalState(viewManager, "views");
-		Assert.assertNotNull(views);
-		Assert.assertTrue(views.size() == 2);
+		assertNotNull(views);
+		assertTrue(views.size() == 2);
 
 		viewManager.removeView(mockedOutlineView);
-		Assert.assertTrue(views.size() == 1);
+		assertTrue(views.size() == 1);
 
 		viewManager.removeView(mockedPropertyView);
-		Assert.assertTrue(views.size() == 0);
+		assertTrue(views.size() == 0);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testSetEventAsNull() {
+	public void setEvent_withNullArgument_throwsIllegalArgumentException() {
 		viewManager = new ViewManagerImpl();
 		viewManager.setEvent(null);
 	}
 
 	@Test
-	public void testSetEvent() {
+	public void setEvent_withValidEvent_notifyAllObservers() {
 		viewManager = new ViewManagerImpl();
 
 		viewManager.addView(mockedOutlineView);
 		viewManager.addView(mockedPropertyView);
 
 		Collection<IView> views = Whitebox.getInternalState(viewManager, "views");
-		Assert.assertNotNull(views);
-		Assert.assertTrue(views.size() == 2);
+		assertNotNull(views);
+		assertTrue(views.size() == 2);
 
 		Event javaFileEvent = new Event("Java");
 		viewManager.setEvent(javaFileEvent);
