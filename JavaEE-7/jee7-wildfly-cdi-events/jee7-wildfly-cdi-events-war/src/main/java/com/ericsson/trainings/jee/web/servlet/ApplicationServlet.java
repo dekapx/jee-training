@@ -31,8 +31,9 @@ public class ApplicationServlet extends HttpServlet {
 		final PrintWriter writer = response.getWriter();
 		writer.write("<B>Welcome to Wildfly JEE-7</B><BR><BR>");
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 100; i++) {
 			final CdiEvent cdiEvent = new CdiEvent("CdiEvent - " + (i + 1));
+			LOGGER.info("Sending event -> {}", cdiEvent.getEvent());
 			eventSender.sendEvent(cdiEvent);
 		}
 

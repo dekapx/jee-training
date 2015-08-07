@@ -1,5 +1,6 @@
 package com.ericsson.trainings.jee.cdi.sender;
 
+import javax.ejb.Asynchronous;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
@@ -18,6 +19,7 @@ public class EventSender {
 	@Inject
 	private Event<CdiEvent> events;
 
+	@Asynchronous // make event sending asynchronous
 	public void sendEvent(final CdiEvent event) {
 		LOGGER.info("Sending event [{}] to event observers...", event);
 		events.fire(event);
