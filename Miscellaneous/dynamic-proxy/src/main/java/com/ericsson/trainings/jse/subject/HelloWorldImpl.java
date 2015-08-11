@@ -9,7 +9,6 @@ public class HelloWorldImpl implements HelloWorld {
 	@Override
 	public String sayHello(final String arg) {
 		LOGGER.info("method [sayHello] invoked with parameter - [{}]", arg);
-
 		return "Hello !!! " + arg;
 	}
 

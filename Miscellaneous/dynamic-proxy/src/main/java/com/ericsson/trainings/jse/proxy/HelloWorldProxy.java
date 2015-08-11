@@ -21,6 +21,7 @@ public class HelloWorldProxy implements InvocationHandler {
 		this.object = object;
 	}
 
+	@Override
 	public Object invoke(final Object proxy, final Method method, final Object[] args) throws Exception {
 		Object result = null;
 

@@ -33,6 +33,8 @@ public class ServiceManagerTest {
 		final FileWriter fileWriter = serviceManager.getService(CsvFileWriter.class);
 		assertNotNull(fileWriter);
 		assertTrue(fileWriter instanceof CsvFileWriter);
+
+		fileWriter.write("sample contents...");
 	}
 
 	@Test
@@ -40,5 +42,7 @@ public class ServiceManagerTest {
 		final FileWriter fileWriter = serviceManager.getService(DummyFileWriter.class);
 		assertNotNull(fileWriter);
 		assertTrue(fileWriter instanceof DummyFileWriter);
+
+		fileWriter.write("sample contents...");
 	}
 }
