@@ -11,8 +11,10 @@ public enum GenericProxyFactory {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public <T> T getObjectByClassType(final Class<T> clazz) {
+		// with an assumption of default constructor.
 		final Constructor constructor = clazz.getConstructors()[0];
 		try {
+			// instantiating using default constructor
 			return (T) DynamicProxy.newInstance(constructor.newInstance());
 		} catch (InstantiationException e) {
 			e.printStackTrace();
