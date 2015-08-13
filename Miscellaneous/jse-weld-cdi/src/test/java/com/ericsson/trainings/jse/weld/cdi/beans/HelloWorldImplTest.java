@@ -16,7 +16,7 @@ public class HelloWorldImplTest {
 	@Before
 	public void setUp() throws Exception {
 		final WeldContainer weld = new Weld().initialize();
-		helloWorld = weld.instance().select(HelloWorldImpl.class).get();
+		helloWorld = weld.instance().select(HelloWorld.class).get();
 	}
 
 	@After
