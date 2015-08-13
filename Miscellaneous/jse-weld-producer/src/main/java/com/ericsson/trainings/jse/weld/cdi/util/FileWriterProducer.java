@@ -9,22 +9,22 @@ import com.ericsson.trainings.jse.weld.cdi.beans.TextFileWriter;
 import com.ericsson.trainings.jse.weld.cdi.beans.XmlFileWriter;
 
 @ApplicationScoped
-public class FileWriterFactory {
+public class FileWriterProducer {
 
 	@Produces
-	@FileWriterType(FileWriterTypes.CSV)
+	@WriterType(FileWriterTypes.CSV)
 	private FileWriter getCsvFileWriter() {
 		return new CsvFileWriter();
 	}
 
 	@Produces
-	@FileWriterType(FileWriterTypes.TEXT)
+	@WriterType(FileWriterTypes.TEXT)
 	private FileWriter getTextFileWriter() {
 		return new TextFileWriter();
 	}
 
 	@Produces
-	@FileWriterType(FileWriterTypes.XML)
+	@WriterType(FileWriterTypes.XML)
 	private FileWriter getXmlFileWriter() {
 		return new XmlFileWriter();
 	}

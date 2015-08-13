@@ -13,6 +13,6 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({ FIELD, TYPE, METHOD })
-public @interface FileWriterType {
+public @interface WriterType {
 	FileWriterTypes value();
 }
