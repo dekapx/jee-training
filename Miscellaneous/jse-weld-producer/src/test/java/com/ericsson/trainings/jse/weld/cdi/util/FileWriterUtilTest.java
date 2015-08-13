@@ -26,7 +26,7 @@ public class FileWriterUtilTest {
 
 	@Test
 	public void writeCsvFileContents() {
-		fileWriterUtil.writeCsvFile("sample text");
+		fileWriterUtil.writeToFile("sample text");
 	}
 
 }

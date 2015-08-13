@@ -1,4 +1,4 @@
-package com.ericsson.trainings.jse.weld.cdi.util;
+package com.ericsson.trainings.jse.weld.cdi.producer;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;

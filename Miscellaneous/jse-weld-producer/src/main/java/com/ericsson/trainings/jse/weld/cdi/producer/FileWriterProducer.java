@@ -1,4 +1,4 @@
-package com.ericsson.trainings.jse.weld.cdi.util;
+package com.ericsson.trainings.jse.weld.cdi.producer;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
