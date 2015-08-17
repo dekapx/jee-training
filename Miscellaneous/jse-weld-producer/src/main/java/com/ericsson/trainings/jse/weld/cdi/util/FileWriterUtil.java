@@ -9,7 +9,7 @@ import com.ericsson.trainings.jse.weld.cdi.producer.WriterType;
 public class FileWriterUtil {
 
 	@Inject
-	@WriterType(FileWriterTypes.CSV)
+	@WriterType(FileWriterTypes.TEXT)
 	private FileWriter fileWriter;
 
 	public void writeToFile(final String contents) {
