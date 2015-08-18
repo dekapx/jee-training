@@ -2,29 +2,46 @@ package com.ericsson.trainings.jaxb.client;
 
 import java.io.File;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-
+import com.ericsson.trainings.jaxb.beans.Address;
+import com.ericsson.trainings.jaxb.beans.Contact;
 import com.ericsson.trainings.jaxb.beans.Student;
+import com.ericsson.trainings.jaxb.marshaller.JaxbMarshaller;
 
 public class JaxbClient {
+
 	public static void main(String[] args) {
+		marshallStudent();
+		masrhallContact();
+	}
+
+	public static void masrhallContact() {
+		final Contact contact = new Contact();
+		contact.setFirstName("De");
+		contact.setLastName("Kapx");
+		contact.setEmail("dekapx@gmail.com");
+		contact.setContactNumber(123456789);
+
+		final Address address = new Address();
+		address.setHouseNo("LM Ericsson Ltd.");
+		address.setStreet("Ericsson Software Campus");
+		address.setCity("Athlone");
+		address.setZipCode("N37 PV44");
+		address.setCounty("Westmeath");
+		contact.setAddress(address);
+
+		final File outputFile = new File("src/main/resources/xml/contact.xml");
+		JaxbMarshaller.marshall(contact, outputFile);
+	}
+
+	public static void marshallStudent() {
 		final Student student = new Student();
 		student.setId(1L);
 		student.setFirstName("De");
 		student.setLastName("Kapx");
-		student.setMarks(87.69);
+		student.setMarks(98.99);
 
-		final File file = new File("src/main/resources/xml/student.xml");
-		try {
-			final JAXBContext jaxbContext = JAXBContext.newInstance(Student.class);
-			final Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			jaxbMarshaller.marshal(student, file);
-			jaxbMarshaller.marshal(student, System.out);
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}
+		final File outputFile = new File("src/main/resources/xml/student.xml");
+		JaxbMarshaller.marshall(student, outputFile);
 	}
+
 }
