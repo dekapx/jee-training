@@ -48,5 +48,6 @@
 	<modules>
 		<module>jaxb-marshal</module>
 		<module>jaxb-unmarshal</module>
+		<module>jaxb-schema-validation</module>
 	</modules>
 </project>

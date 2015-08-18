@@ -8,11 +8,11 @@ import javax.xml.bind.Unmarshaller;
 
 public class JaxbUnmarshaller {
 	@SuppressWarnings("unchecked")
-	public static <T> T unmarshall(final Class<T> clazz, final File outputFile) {
+	public static <T> T unmarshall(final Class<T> clazz, final File xmlFile) {
 		try {
 			final JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			return (T) jaxbUnmarshaller.unmarshal(outputFile);
+			return (T) jaxbUnmarshaller.unmarshal(xmlFile);
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}

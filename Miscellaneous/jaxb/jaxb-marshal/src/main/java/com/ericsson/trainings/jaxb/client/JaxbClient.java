@@ -31,8 +31,8 @@ public class JaxbClient {
 		address.setCounty("Westmeath");
 		contact.setAddress(address);
 
-		final File outputFile = new File("src/main/resources/xml/contact.xml");
-		JaxbMarshaller.marshall(contact, outputFile);
+		final File xmlFile = new File("src/main/resources/xml/contact.xml");
+		JaxbMarshaller.marshall(contact, xmlFile);
 	}
 
 	public static void marshallStudent() {
@@ -42,8 +42,8 @@ public class JaxbClient {
 		student.setLastName("Kapx");
 		student.setMarks(98.99);
 
-		final File outputFile = new File("src/main/resources/xml/student.xml");
-		JaxbMarshaller.marshall(student, outputFile);
+		final File xmlFile = new File("src/main/resources/xml/student.xml");
+		JaxbMarshaller.marshall(student, xmlFile);
 	}
 
 }
