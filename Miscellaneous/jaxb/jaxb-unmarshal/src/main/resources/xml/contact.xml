@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contact>
+    <firstName>De</firstName>
+    <lastName>Kapx</lastName>
+    <email>dekapx@gmail.com</email>
+    <contactNumber>123456789</contactNumber>
+    <address>
+        <houseNo>LM Ericsson Ltd.</houseNo>
+        <street>Ericsson Software Campus</street>
+        <city>Athlone</city>
+        <zipCode>N37 PV44</zipCode>
+        <county>Westmeath</county>
+    </address>
+</contact>

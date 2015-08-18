@@ -11,7 +11,9 @@ public class JaxbClient {
 
 	public static void main(String[] args) {
 		marshallStudent();
+		System.out.println("----------------------------------");
 		masrhallContact();
+		System.out.println("----------------------------------");
 	}
 
 	public static void masrhallContact() {
