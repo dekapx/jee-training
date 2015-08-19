@@ -11,7 +11,7 @@ public class JaxbUnmarshaller {
 	public static <T> T unmarshall(final Class<T> clazz, final File xmlFile) {
 		try {
 			final JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			final Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			return (T) jaxbUnmarshaller.unmarshal(xmlFile);
 		} catch (JAXBException e) {
 			e.printStackTrace();

@@ -1,9 +1,12 @@
 package com.ericsson.trainings.jaxb.client;
 
 import java.io.File;
+import java.util.List;
 
 import com.ericsson.trainings.jaxb.beans.Address;
 import com.ericsson.trainings.jaxb.beans.Contact;
+import com.ericsson.trainings.jaxb.beans.Department;
+import com.ericsson.trainings.jaxb.beans.Employee;
 import com.ericsson.trainings.jaxb.beans.Student;
 import com.ericsson.trainings.jaxb.unmarshaller.JaxbUnmarshaller;
 
@@ -13,6 +16,7 @@ public class JaxbClient {
 		System.out.println("----------------------------------");
 		unmarshallContact();
 		System.out.println("----------------------------------");
+		unmarshallDeptEmployee();
 	}
 
 	public static void unmarshallStudent() {
@@ -31,5 +35,16 @@ public class JaxbClient {
 		System.out.println(address.getCity());
 		System.out.println(address.getZipCode());
 		System.out.println(address.getCounty());
+	}
+
+	public static void unmarshallDeptEmployee() {
+		final File xmlFile = new File("src/main/resources/xml/dept-emp.xml");
+		final Department department = JaxbUnmarshaller.unmarshall(Department.class, xmlFile);
+		System.out.println(department.getId() + " " + department.getName());
+
+		final List<Employee> employees = department.getEmployee();
+		for (Employee employee : employees) {
+			System.out.println(employee.getFirstName() + " " + employee.getLastName() + " " + employee.getDesignation());
+		}
 	}
 }

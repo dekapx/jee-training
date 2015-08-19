@@ -22,7 +22,7 @@ public class JaxbUnmarshaller {
 			final Schema schema = schemaFactory.newSchema(new StreamSource(xsdFile));
 
 			final JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			final Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			jaxbUnmarshaller.setSchema(schema);
 			jaxbUnmarshaller.setEventHandler(new SchemaValidationEventHandler());
 			return (T) jaxbUnmarshaller.unmarshal(xmlFile);
