@@ -5,7 +5,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="id" type="xs:long" />
-				<xs:element name="deptName" type="xs:string" />
+				<xs:element name="name" type="xs:string" />
 				<xs:element ref="employee" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>

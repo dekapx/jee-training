@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<department>
+    <id>1</id>
+    <name>Engineering</name>
+    <employee>
+        <id>1</id>
+        <firstName>fname1</firstName>
+        <lastName>lname1</lastName>
+        <designation>Trainee Engineer</designation>
+        <email>fname1.lname1@test.com</email>
+    </employee>
+    <employee>
+        <id>2</id>
+        <firstName>fname2</firstName>
+        <lastName>lname2</lastName>
+        <designation>Senior Engineer</designation>
+        <email>fname2.lname2@test.com</email>
+    </employee>
+</department>
